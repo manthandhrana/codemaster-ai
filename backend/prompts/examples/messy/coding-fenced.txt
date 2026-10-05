@@ -1,0 +1,36 @@
+<think>
+The user wants a medium problem about prefix sums. Let me design something...
+</think>
+Sure! Here is an original problem for you:
+
+```json
+{
+  "problem": {
+    "title": "\"Quiet Corridor\"",
+    "topic": "Prefix Sums",
+    "tags": "prefix sums\ntwo pointers",
+    "description": "A museum corridor has n sensors in a row, each reporting a noise level. Visitors call a contiguous stretch of sensors quiet when its total noise is exactly k. Count the quiet stretches.",
+    "inputFormat": "First line: n and k. Second line: n integers.",
+    "outputFormat": "Print the number of quiet stretches.",
+    "constraints": "1 <= n <= 2*10^5\n-10^4 <= a_i <= 10^4",
+    "examples": [
+      { "input": ["3 2", "1 1 1"], "output": 2, "explanation": "[1,1] at positions 1-2 and 2-3." },
+      { "input": "3 3\\n1 2 3", "expectedOutput": "2" }
+    ],
+    "tests": [
+      { "input": "1 0\n0", "output": "1" },
+      { "input": "4 0\n1 -1 1 -1", "output": "4" },
+      { "input": "3 2\n1 1 1", "output": "2" },
+      { "input": "5 5\n5 5 5 5 5", "output": "5" }
+    ],
+    "hints": "Think about prefix sums.\nHow many earlier prefixes equal current - k?",
+    "approach": "Count prefix sums in a hash map.",
+    "timeComplexity": "O(n)",
+    "spaceComplexity": "O(n)",
+    "solution": "import sys\nfrom collections import defaultdict\nd = list(map(int, sys.stdin.read().split()))\nn, k = d[0], d[1]\nseen = defaultdict(int)\nseen[0] = 1\ns = ans = 0\nfor x in d[2:2 + n]:\n    s += x\n    ans += seen[s - k]\n    seen[s] += 1\nprint(ans)\n",
+    "followups": ["Return the stretches themselves, not just the count."],
+  }
+}
+```
+
+Let me know if you want another one!

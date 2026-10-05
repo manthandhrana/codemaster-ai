@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ai-review",
+  "title": "AI interview review (stored on the submission)",
+  "type": "object",
+  "required": ["summary", "correctness", "timeComplexity", "spaceComplexity", "isOptimal", "codeQuality", "interviewRating", "strengths", "improvements", "optimizedApproach"],
+  "properties": {
+    "summary": { "type": "string", "minLength": 1 },
+    "correctness": { "type": "string" },
+    "timeComplexity": { "type": "string" },
+    "spaceComplexity": { "type": "string" },
+    "isOptimal": { "type": "boolean" },
+    "codeQuality": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "interviewRating": { "enum": ["Strong Hire", "Hire", "Lean Hire", "Lean No Hire", "No Hire"] },
+    "strengths": { "type": "array", "maxItems": 6, "items": { "type": "string" } },
+    "improvements": { "type": "array", "maxItems": 6, "items": { "type": "string" } },
+    "optimizedApproach": { "type": "string" }
+  }
+}

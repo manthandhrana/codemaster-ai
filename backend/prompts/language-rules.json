@@ -1,0 +1,15 @@
+{
+  "python": "Python 3 only. Read with sys.stdin. Avoid deep recursion (prefer iterative code or set sys.setrecursionlimit).",
+  "cpp": "C++17. #include <bits/stdc++.h> is allowed. Use fast I/O and long long where overflow is possible.",
+  "java": "Java 17. The class containing main MUST be `public class Main`. Use BufferedReader/StringTokenizer for fast input.",
+  "javascript": "Node.js (CommonJS). Read the whole input with require('fs').readFileSync(0, 'utf8'). Use BigInt when values can exceed 2^53.",
+  "typescript": "TypeScript for Node.js with no external packages. Start the file with `declare const require: any;` and read input via require('fs').readFileSync(0, 'utf8'). Do not use enums or namespaces.",
+  "c": "C11. Use scanf/printf. Use long long where overflow is possible.",
+  "go": "Go 1.22. package main, use bufio.Reader/Writer for fast I/O. No unused imports or variables.",
+  "rust": "Rust 2021, std only (no external crates). Read all of stdin into a String and parse tokens.",
+  "csharp": "C# 10 with `class Program` and `static void Main()`. Read input via Console.In.",
+  "kotlin": "Kotlin/JVM with `fun main()`. Read input via System.`in`.bufferedReader().",
+  "php": "PHP 8. Read input via stream_get_contents(STDIN) or fgets(STDIN).",
+  "ruby": "Ruby 3. Read input via STDIN.read.",
+  "swift": "Swift 5. Read input line by line via readLine()."
+}

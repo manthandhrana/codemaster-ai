@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ai-hint",
+  "title": "AI hint answer",
+  "type": "object",
+  "required": ["hint", "focus"],
+  "properties": {
+    "hint": { "type": "string", "minLength": 1 },
+    "focus": { "type": "string", "minLength": 1 }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "coding-response",
+  "title": "Coding problem - what the AI is asked to return",
+  "description": "Mirrors contracts/coding.md. AI answers are accepted more loosely than this (see services/normalize.js) but examples/coding.response.json must satisfy it.",
+  "type": "object",
+  "required": [
+    "title",
+    "description",
+    "inputFormat",
+    "outputFormat",
+    "constraints",
+    "examples",
+    "testCases",
+    "hints",
+    "approach",
+    "complexity",
+    "starterCode",
+    "solutionCode"
+  ],
+  "properties": {
+    "title": { "type": "string", "minLength": 3 },
+    "topic": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "pattern": { "type": "string" },
+    "description": { "type": "string", "minLength": 30 },
+    "inputFormat": { "type": "string" },
+    "outputFormat": { "type": "string" },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "examples": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["input", "output"],
+        "properties": { "input": { "type": "string" }, "output": { "type": "string" }, "explanation": { "type": "string" } }
+      }
+    },
+    "testCases": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["input", "output"],
+        "properties": { "input": { "type": "string" }, "output": { "type": "string" } }
+      }
+    },
+    "hints": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+    "approach": { "type": "string" },
+    "complexity": {
+      "type": "object",
+      "required": ["time", "space"],
+      "properties": { "time": { "type": "string" }, "space": { "type": "string" } }
+    },
+    "starterCode": { "type": "string" },
+    "solutionCode": { "type": "string" },
+    "followUps": { "type": "array", "items": { "type": "string" } },
+    "referenceJs": { "type": "string" }
+  }
+}

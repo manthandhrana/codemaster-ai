@@ -1,0 +1,40 @@
+# Render Blueprint — one web service: the Express API also serves the built React admin panel.
+# Deploy: https://render.com/deploy?repo=https://github.com/manthandhrana/codemaster-ai
+services:
+  - type: web
+    name: codemaster-ai
+    runtime: node
+    plan: free # free instances sleep when idle; daily schedules catch up on wake. Use "starter" to keep them on time.
+    region: singapore
+    # devDependencies (vite) are needed to build the admin panel, so include them explicitly
+    buildCommand: npm --prefix backend install --omit=dev && npm --prefix frontend install --include=dev && npm --prefix frontend run build
+    startCommand: npm --prefix backend start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: TRUST_PROXY
+        value: 1
+      - key: MONGODB_DB
+        value: codemaster
+      - key: JWT_SECRET
+        generateValue: true
+
+      # --- set these in the Render dashboard (never commit them) ---
+      - key: MONGODB_URI # required on Render — the built-in database is for local use
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD_HASH # npm --prefix backend run hash-password -- "YourPassword"
+        sync: false
+      - key: CLIENT_ORIGIN # e.g. https://codemaster-ai.onrender.com
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false

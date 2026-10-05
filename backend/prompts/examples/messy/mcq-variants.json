@@ -1,0 +1,23 @@
+{
+  "mcqs": [
+    {
+      "prompt": "What is the time complexity of binary search on a sorted array of n elements?",
+      "choices": ["A) O(n)", "B) O(log n)", "C) O(n log n)", "D) O(1)"],
+      "answer": "B",
+      "rationale": "The search space halves each step, so it takes about log2(n) steps.",
+      "hint": "How many times can you halve n?"
+    },
+    {
+      "question": "Which data structure gives O(1) average-time lookups by key?",
+      "options": [{ "text": "Linked list" }, { "text": "Hash table" }, { "text": "Binary heap" }, { "text": "Sorted array" }],
+      "correct": "Hash table",
+      "explanation": "Hash tables map keys to buckets directly; the others need O(n) or O(log n) searches."
+    },
+    {
+      "question": "This item is broken and must be dropped by the normalizer.",
+      "options": ["only one option", "only one option"],
+      "correctIndex": 7,
+      "explanation": "Invalid on purpose."
+    }
+  ]
+}

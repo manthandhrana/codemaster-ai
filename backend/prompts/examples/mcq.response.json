@@ -1,0 +1,24 @@
+{
+  "questions": [
+    {
+      "title": "HashMap iteration order",
+      "topic": "Collections / STL",
+      "tags": ["java", "hashmap"],
+      "question": "Which statement about `java.util.HashMap` iteration order is correct?",
+      "options": ["It follows insertion order", "It is sorted by key", "It is not guaranteed", "It is reverse insertion order"],
+      "correctIndex": 2,
+      "explanation": "`HashMap` makes no ordering guarantees. Use `LinkedHashMap` for insertion order or `TreeMap` for sorted keys.",
+      "hints": ["Which Map implementation exists specifically to keep insertion order?"]
+    },
+    {
+      "title": "Integer cache comparison",
+      "topic": "Memory & References",
+      "tags": ["java", "boxing"],
+      "question": "What does this print?\n\n```java\nInteger a = 127, b = 127;\nInteger c = 128, d = 128;\nSystem.out.println((a == b) + \" \" + (c == d));\n```",
+      "options": ["true true", "true false", "false false", "false true"],
+      "correctIndex": 1,
+      "explanation": "Autoboxing uses `Integer.valueOf`, which caches -128..127, so `a` and `b` are the same object while `c` and `d` are two different objects.",
+      "hints": ["Autoboxing calls Integer.valueOf - what does it cache?"]
+    }
+  ]
+}

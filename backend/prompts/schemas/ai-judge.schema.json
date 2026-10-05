@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "ai-judge",
+  "title": "AI judge answer (used only when no code runner supports the language)",
+  "type": "object",
+  "required": ["compiles", "results"],
+  "properties": {
+    "compiles": { "type": "boolean" },
+    "compileError": { "type": ["string", "null"] },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["index", "output"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 0 },
+          "output": { "type": "string" },
+          "status": { "enum": ["ok", "runtime_error", "timeout"] },
+          "note": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

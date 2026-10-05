@@ -1,0 +1,33 @@
+{
+  "title": "Even Harvest Total",
+  "topic": "Arrays",
+  "tags": ["arrays", "math"],
+  "pattern": "Single pass",
+  "description": "A farmer logs the weight of each harvested crate. Only crates with an **even** weight can be sold at the market. Compute the total weight of the sellable crates.",
+  "inputFormat": "The first line contains `n`. The second line contains `n` integers `w1 ... wn`.",
+  "outputFormat": "Print the sum of all even weights.",
+  "constraints": ["1 <= n <= 10^5", "-10^9 <= wi <= 10^9"],
+  "examples": [
+    { "input": "5\n1 2 3 4 5", "output": "6", "explanation": "2 + 4 = 6" },
+    { "input": "3\n7 9 11", "output": "0", "explanation": "There are no even weights." }
+  ],
+  "testCases": [
+    { "input": "4\n2 4 6 8", "output": "20" },
+    { "input": "1\n-4", "output": "-4" },
+    { "input": "6\n1000000000 1000000000 1000000000 1 1 1", "output": "3000000000" },
+    { "input": "5\n0 0 0 0 1", "output": "0" },
+    { "input": "3\n4 4 4", "output": "12" },
+    { "input": "4\n-2 -3 5 6", "output": "4" }
+  ],
+  "hints": [
+    "Look at each weight exactly once.",
+    "A number is even when x % 2 == 0 (careful with negative numbers in some languages).",
+    "Keep a running 64-bit total of the even values."
+  ],
+  "approach": "Scan the weights once and add every even value to a 64-bit accumulator. The sum can reach 10^14, so 32-bit integers overflow.",
+  "complexity": { "time": "O(n)", "space": "O(1)" },
+  "starterCode": "import sys\n\ndef even_total(w):\n    # TODO: return the sum of the even weights\n    return 0\n\ndef main():\n    d = sys.stdin.read().split()\n    n = int(d[0])\n    print(even_total(list(map(int, d[1:1 + n]))))\n\nmain()\n",
+  "solutionCode": "import sys\n\nd = sys.stdin.read().split()\nn = int(d[0])\nprint(sum(x for x in map(int, d[1:1 + n]) if x % 2 == 0))\n",
+  "followUps": ["What if the weights arrive as a stream that does not fit in memory?"],
+  "referenceJs": "const d = require('fs').readFileSync(0, 'utf8').trim().split(/\\s+/).map(BigInt);\nconst n = Number(d[0]);\nlet s = 0n;\nfor (let i = 1; i <= n; i++) if (d[i] % 2n === 0n) s += d[i];\nconsole.log(s.toString());\n"
+}

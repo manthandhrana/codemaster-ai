@@ -1,0 +1,221 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* surfaces */
+  --color-bg: #0b0d11;
+  --color-surface: #13161d;
+  --color-surface-2: #1a1e27;
+  --color-surface-3: #222734;
+  --color-editor: #0f1218;
+  --color-line: #262b37;
+  --color-line-strong: #343b4b;
+
+  /* ink */
+  --color-ink: #e9ebf1;
+  --color-ink-2: #aab1c0;
+  --color-muted: #737b8c;
+
+  /* brand */
+  --color-brand: #8b5cf6;
+  --color-brand-2: #22d3ee;
+
+  /* charts (validated against --color-surface, dark mode) */
+  --color-series-1: #3987e5;
+  --color-series-2: #d95926;
+  --color-series-fail: #e66767;
+  --color-grid: #232834;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(139 92 246 / 0.35);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2e3442 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2e3442;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ---------------------------------------------------------------- markdown */
+.md {
+  font-size: 0.925rem;
+  line-height: 1.7;
+  color: var(--color-ink-2);
+  overflow-wrap: anywhere;
+}
+.md > * + * {
+  margin-top: 0.75rem;
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  color: var(--color-ink);
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 1.25rem;
+}
+.md h1 {
+  font-size: 1.25rem;
+}
+.md h2 {
+  font-size: 1.1rem;
+}
+.md h3,
+.md h4 {
+  font-size: 1rem;
+}
+.md strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.md a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+.md ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+.md li + li {
+  margin-top: 0.25rem;
+}
+.md blockquote {
+  border-left: 3px solid var(--color-line-strong);
+  padding-left: 0.9rem;
+  color: var(--color-muted);
+}
+.md :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  background: var(--color-surface-3);
+  color: #e2e8f0;
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 0.1rem 0.35rem;
+}
+.md pre {
+  background: var(--color-editor);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.md pre code,
+.md pre code.hljs {
+  font-family: var(--font-mono);
+  background: transparent;
+  padding: 0;
+}
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.md th,
+.md td {
+  border: 1px solid var(--color-line);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.md th {
+  background: var(--color-surface-2);
+  color: var(--color-ink);
+}
+.md hr {
+  border-color: var(--color-line);
+}
+
+/* ---------------------------------------------------------------- misc */
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+.animate-shake {
+  animation: shake 0.45s both;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-pop {
+  animation: pop 0.18s ease-out both;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

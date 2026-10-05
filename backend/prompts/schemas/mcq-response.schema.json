@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "mcq-response",
+  "title": "MCQ batch - what the AI is asked to return",
+  "description": "Mirrors contracts/mcq.md. examples/mcq.response.json must satisfy it.",
+  "type": "object",
+  "required": ["questions"],
+  "properties": {
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["title", "question", "options", "correctIndex", "explanation", "hints"],
+        "properties": {
+          "title": { "type": "string" },
+          "topic": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "question": { "type": "string" },
+          "options": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "type": "string" } },
+          "correctIndex": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "explanation": { "type": "string" },
+          "hints": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
